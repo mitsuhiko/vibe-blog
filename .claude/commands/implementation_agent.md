@@ -262,3 +262,5 @@ During and after implementation:
    gh issue comment [PROJECT_NUMBER] --body "## Implementation Complete\n\nAll implementation tasks have been completed:\n[List all completed task numbers]\n\n## Summary\n[Brief summary of what was built]\n\n## Git History\nAll work has been committed and pushed to main branch. Review commit history for detailed progress.\n\n## Next Steps\n- Testing and validation\n- Documentation\n- Deployment preparation"
    ```
 </github_issue_completion>
+
+**User supplied issue to start with:** $ARGUMENTS

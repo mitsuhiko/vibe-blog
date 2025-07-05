@@ -288,3 +288,5 @@ After completing your architecture design:
    gh issue comment NUMBER --body "Task breakdown work will continue in issue #[NEW_NUMBER]"
    ```
 </github_issue_completion>
+
+**Instructions provided:** $ARGUMENTS

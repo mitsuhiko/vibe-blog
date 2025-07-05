@@ -234,3 +234,5 @@ After completing your detailed planning for a task:
 
 6. **Continue planning**: If more tasks need planning, repeat the process for the next highest-priority task
 </github_issue_completion>
+
+**Instructions provided:** $ARGUMENTS

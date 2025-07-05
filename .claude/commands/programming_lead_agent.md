@@ -251,3 +251,5 @@ Commit and push work regularly with: git add -A && git commit -m 'description' &
      --label "research,agent:programming-lead,status:planned"
    ```
 </github_issue_completion>
+
+**User supplied issue to start with:** $ARGUMENTS

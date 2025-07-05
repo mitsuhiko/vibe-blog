@@ -201,3 +201,5 @@ After completing your analysis:
    gh issue comment NUMBER --body "Architecture design work will continue in issue #[NEW_NUMBER]"
    ```
 </github_issue_completion>
+
+**User supplied issue to start with:** $ARGUMENTS

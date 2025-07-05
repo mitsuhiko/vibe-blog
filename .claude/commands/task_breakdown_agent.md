@@ -209,3 +209,5 @@ After completing your task breakdown:
    gh issue comment NUMBER --body "Created the following implementation task issues:\n- Database: #[DB_NUMBER]\n- API: #[API_NUMBER]\n- Frontend: #[FE_NUMBER]\n\nDetailed planning will continue in issue #[PLANNING_NUMBER]"
    ```
 </github_issue_completion>
+
+**User supplied issue to start with:** $ARGUMENTS
