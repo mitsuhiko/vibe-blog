@@ -255,7 +255,7 @@ When you need to delegate to the Problem Analysis Agent:
    ```
 2. Read the agent prompt:
    ```
-   Use Read tool: /Users/mitsuhiko/Development/vibe-blog/prompts/problem_analysis_agent.md
+   /problem_analysis_agent
    ```
 3. Use the Task tool with the full prompt:
    ```
