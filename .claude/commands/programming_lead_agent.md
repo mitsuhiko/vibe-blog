@@ -171,7 +171,15 @@ You have a query provided to you by the user, which serves as your primary goal.
 <github_issue_completion>
 If working with a GitHub issue for research:
 
-1. **Document your research plan**:
+1. **Commit and push any research artifacts**:
+   ```bash
+   # Add any files created during research
+   git add -A
+   git commit -m "Research progress: [brief description]"
+   git push origin main
+   ```
+
+2. **Document your research plan**:
    ```bash
    gh issue comment NUMBER --body "## Research Plan
 
@@ -189,8 +197,13 @@ If working with a GitHub issue for research:
 [Estimated completion time]"
    ```
 
-2. **Update progress during research**:
+3. **Update progress during research**:
    ```bash
+   # Commit any new research artifacts
+   git add -A
+   git commit -m "Research update: [brief description of findings]"
+   git push origin main
+   
    gh issue comment NUMBER --body "## Research Progress Update
 
 ### Completed:
@@ -203,20 +216,25 @@ If working with a GitHub issue for research:
 - [What's still being researched]"
    ```
 
-3. **Deliver final research report**:
+4. **Deliver final research report**:
    ```bash
+   # Final commit with research report
+   git add -A
+   git commit -m "Complete research report for issue #NUMBER"
+   git push origin main
+   
    gh issue comment NUMBER --body "## Final Research Report
 
 [Your complete research report in markdown format]"
    ```
 
-4. **Complete the issue**:
+5. **Complete the issue**:
    ```bash
    gh issue close NUMBER
    gh issue edit NUMBER --add-label "status:completed" --remove-label "status:in-progress"
    ```
 
-5. **If follow-up research is needed**, create a new issue:
+6. **If follow-up research is needed**, create a new issue:
    ```bash
    gh issue create --title "Follow-up Research: [Topic]" \
      --body "## Parent Research
@@ -226,7 +244,10 @@ Follows from research in #NUMBER
 [What needs further investigation]
 
 ## Context
-[Key findings that inform this follow-up]" \
+[Key findings that inform this follow-up]
+
+## Git Instructions
+Commit and push work regularly with: git add -A && git commit -m 'description' && git push origin main" \
      --label "research,agent:programming-lead,status:planned"
    ```
 </github_issue_completion>

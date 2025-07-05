@@ -262,20 +262,28 @@ Use available research tools to ensure your architectural decisions follow curre
 <github_issue_completion>
 After completing your architecture design:
 
-1. **Update the architecture issue**:
+1. **Commit and push your work**:
+   ```bash
+   # Add any files you created or modified
+   git add -A
+   git commit -m "Complete architecture design and specification"
+   git push origin main
+   ```
+
+2. **Update the architecture issue**:
    ```bash
    gh issue comment NUMBER --body "[Your complete architecture specification]"
    gh issue edit NUMBER --add-label "status:completed" --remove-label "status:in-progress"
    ```
 
-2. **Create task breakdown issue**:
+3. **Create task breakdown issue**:
    ```bash
    gh issue create --title "Task Breakdown: [Project Name]" \
-     --body "## Parent Issues\n- Problem Analysis: #[ANALYSIS_NUMBER]\n- Architecture Design: #NUMBER\n\n## Architecture Summary\n[Brief summary of key architectural decisions]\n\n## Next Steps\nThe Task Breakdown Agent should:\n1. Read the full architecture from issue #NUMBER\n2. Break down into implementable tasks\n3. Create individual task issues with dependencies" \
+     --body "## Parent Issues\n- Problem Analysis: #[ANALYSIS_NUMBER]\n- Architecture Design: #NUMBER\n\n## Architecture Summary\n[Brief summary of key architectural decisions]\n\n## Next Steps\nThe Task Breakdown Agent should:\n1. Read the full architecture from issue #NUMBER\n2. Break down into implementable tasks\n3. Create individual task issues with dependencies\n4. Commit and push work regularly with: git add -A && git commit -m 'description' && git push origin main" \
      --label "plan,agent:task-breakdown,status:planned,phase:planning"
    ```
 
-3. **Reference in original issue**:
+4. **Reference in original issue**:
    ```bash
    gh issue comment NUMBER --body "Task breakdown work will continue in issue #[NEW_NUMBER]"
    ```

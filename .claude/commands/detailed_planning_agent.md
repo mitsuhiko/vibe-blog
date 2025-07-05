@@ -199,30 +199,38 @@ Transform the provided coarse tasks into step-by-step implementation plans that 
 <github_issue_completion>
 After completing your detailed planning for a task:
 
-1. **Update the task issue with your plan**:
+1. **Commit and push your work**:
+   ```bash
+   # Add any files you created or modified during planning
+   git add -A
+   git commit -m "Complete detailed planning for task #NUMBER"
+   git push origin main
+   ```
+
+2. **Update the task issue with your plan**:
    ```bash
    gh issue comment NUMBER --body "[Your complete detailed implementation plan]"
    ```
 
-2. **Update issue labels for implementation**:
+3. **Update issue labels for implementation**:
    ```bash
    # Remove detailed-planning label and add implementation label
    gh issue edit NUMBER --remove-label "agent:detailed-planning" --add-label "agent:implementation"
    # Keep status as planned so implementation agent can pick it up
    ```
 
-3. **Check for more planning tasks**:
+4. **Check for more planning tasks**:
    ```bash
    # Find other tasks needing planning
    gh issue list --label "agent:detailed-planning" --label "status:planned"
    ```
 
-4. **If all planning is complete**, create implementation coordination issue:
+5. **If all planning is complete**, create implementation coordination issue:
    ```bash
    gh issue create --title "Implementation Coordination: [Project Name]" \
-     --body "## Planning Complete\nAll tasks have been planned and are ready for implementation.\n\n## Implementation Tasks\n[List all task issue numbers]\n\n## Next Steps\nThe Implementation Agent should:\n1. Query for tasks labeled 'agent:implementation' and 'status:planned'\n2. Implement tasks based on priority\n3. Update issues as work progresses" \
+     --body "## Planning Complete\nAll tasks have been planned and are ready for implementation.\n\n## Implementation Tasks\n[List all task issue numbers]\n\n## Next Steps\nThe Implementation Agent should:\n1. Query for tasks labeled 'agent:implementation' and 'status:planned'\n2. Implement tasks based on priority\n3. Update issues as work progresses\n4. Commit and push work regularly with: git add -A && git commit -m 'description' && git push origin main" \
      --label "plan,agent:implementation,status:planned,phase:implementation"
    ```
 
-5. **Continue planning**: If more tasks need planning, repeat the process for the next highest-priority task
+6. **Continue planning**: If more tasks need planning, repeat the process for the next highest-priority task
 </github_issue_completion>

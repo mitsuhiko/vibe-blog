@@ -175,20 +175,28 @@ Complete your analysis with a comprehensive problem analysis report following th
 <github_issue_completion>
 After completing your analysis:
 
-1. **Update the original issue**:
+1. **Commit and push your work**:
+   ```bash
+   # Add any files you created during analysis
+   git add -A
+   git commit -m "Complete problem analysis for issue #NUMBER"
+   git push origin main
+   ```
+
+2. **Update the original issue**:
    ```bash
    gh issue comment NUMBER --body "[Your complete analysis report]"
    gh issue edit NUMBER --add-label "status:completed" --remove-label "status:in-progress"
    ```
 
-2. **Create architecture design issue**:
+3. **Create architecture design issue**:
    ```bash
    gh issue create --title "Architecture Design: [Project Name]" \
-     --body "## Parent Issue\nImplements requirements from #NUMBER\n\n## Requirements Summary\n[Brief summary of key requirements from your analysis]\n\n## Next Steps\nThe Architecture Design Agent should:\n1. Read the full problem analysis from issue #NUMBER\n2. Design a comprehensive system architecture\n3. Create task breakdown issues" \
+     --body "## Parent Issue\nImplements requirements from #NUMBER\n\n## Requirements Summary\n[Brief summary of key requirements from your analysis]\n\n## Next Steps\nThe Architecture Design Agent should:\n1. Read the full problem analysis from issue #NUMBER\n2. Design a comprehensive system architecture\n3. Create task breakdown issues\n4. Commit and push work regularly with: git add -A && git commit -m 'description' && git push origin main" \
      --label "architecture,agent:architecture-design,status:planned,phase:design"
    ```
 
-3. **Link issues**: Reference the new architecture issue in the original issue
+4. **Link issues**: Reference the new architecture issue in the original issue
    ```bash
    gh issue comment NUMBER --body "Architecture design work will continue in issue #[NEW_NUMBER]"
    ```

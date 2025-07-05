@@ -89,7 +89,8 @@ Follow this systematic approach to implement the provided task:
 5. **Maintain working state**: Keep the system in a working state throughout implementation.
    - Ensure existing functionality continues to work
    - Test integration points as you implement new features
-   - Commit working code regularly (if using version control)
+   - **CRITICAL**: Commit and push working code regularly using git
+   - After each major step: `git add -A && git commit -m 'Implement [specific feature/component]' && git push origin main`
    - Roll back changes if they break existing functionality
 
 6. **Problem-solving approach**: Handle issues systematically when they arise.
@@ -200,25 +201,44 @@ Execute the implementation plan systematically, providing updates on progress. C
 <github_issue_completion>
 During and after implementation:
 
-1. **Update progress regularly**:
+1. **Commit and push regularly during implementation**:
    ```bash
-   # After completing major steps
-   gh issue comment NUMBER --body "## Progress Update\n\n### Completed Steps:\n- [List completed steps]\n\n### Current Status:\n[What you're working on now]\n\n### Files Created/Modified:\n- [List files with brief descriptions]"
+   # After completing each major step
+   git add -A
+   git commit -m "Implement [specific component/feature] - step X of Y"
+   git push origin main
    ```
 
-2. **If you encounter blockers**, create a bug issue:
+2. **Update progress regularly**:
    ```bash
+   # After completing major steps
+   gh issue comment NUMBER --body "## Progress Update\n\n### Completed Steps:\n- [List completed steps]\n\n### Current Status:\n[What you're working on now]\n\n### Files Created/Modified:\n- [List files with brief descriptions]\n\n### Latest Commit:\n[Brief description of what was just committed]"
+   ```
+
+3. **If you encounter blockers**, create a bug issue:
+   ```bash
+   # First commit any work in progress
+   git add -A
+   git commit -m "WIP: Encountered blocker in [component] - committing progress"
+   git push origin main
+   
+   # Then create the bug issue
    gh issue create --title "Bug: [Brief description of the problem]" \
      --body "## Parent Task\nBlocking implementation of #NUMBER\n\n## Problem Description\n[Detailed description]\n\n## Error Messages\n\`\`\`\n[Error output]\n\`\`\`\n\n## Attempted Solutions\n[What you tried]\n\n## Suggested Resolution\n[Your recommendations]" \
      --label "bug,agent:implementation,status:planned,priority:high"
    
    # Update the main task issue
-   gh issue comment NUMBER --body "Encountered a blocker - see bug issue #[BUG_NUMBER]"
+   gh issue comment NUMBER --body "Encountered a blocker - see bug issue #[BUG_NUMBER]. Work in progress has been committed."
    gh issue edit NUMBER --add-label "status:blocked"
    ```
 
-3. **When implementation is complete**:
+4. **When implementation is complete**:
    ```bash
+   # Final commit and push
+   git add -A
+   git commit -m "Complete implementation of [task name] - closes #NUMBER"
+   git push origin main
+   
    # Add final report as comment
    gh issue comment NUMBER --body "[Your complete implementation report]"
    
@@ -227,18 +247,18 @@ During and after implementation:
    gh issue edit NUMBER --add-label "status:completed" --remove-label "status:in-progress"
    ```
 
-4. **Check for more tasks**:
+5. **Check for more tasks**:
    ```bash
    # Find other implementation tasks
    gh issue list --label "agent:implementation" --label "status:planned"
    ```
 
-5. **If all tasks are complete**, update the main project issue:
+6. **If all tasks are complete**, update the main project issue:
    ```bash
    # Find the main project issue
    gh issue list --label "plan" --search "Project:"
    
    # Add completion comment
-   gh issue comment [PROJECT_NUMBER] --body "## Implementation Complete\n\nAll implementation tasks have been completed:\n[List all completed task numbers]\n\n## Summary\n[Brief summary of what was built]\n\n## Next Steps\n- Testing and validation\n- Documentation\n- Deployment preparation"
+   gh issue comment [PROJECT_NUMBER] --body "## Implementation Complete\n\nAll implementation tasks have been completed:\n[List all completed task numbers]\n\n## Summary\n[Brief summary of what was built]\n\n## Git History\nAll work has been committed and pushed to main branch. Review commit history for detailed progress.\n\n## Next Steps\n- Testing and validation\n- Documentation\n- Deployment preparation"
    ```
 </github_issue_completion>

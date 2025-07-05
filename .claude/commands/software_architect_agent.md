@@ -200,6 +200,15 @@ Use specialized subagents for each phase of the implementation:
    - Read the agent prompt: `Read problem_analysis_agent.md`
    - Create GitHub issue for the work
    - Call Task tool with: "[Full agent prompt content] + Additionally, work with GitHub issue #[NUMBER]"
+
+**IMPORTANT - Git Commit and Push Instructions**:
+All subagents must commit and push their work regularly to maintain visibility and track progress. Include this instruction in all subagent delegations:
+
+"Throughout your work, you MUST commit and push changes regularly using these commands:
+- After completing each major step: `git add -A && git commit -m 'Brief description of work completed'`
+- After each commit: `git push origin main`
+- This ensures progress is visible in GitHub and changes are never lost
+- Commit early and often - aim for at least one commit per major milestone"
 </subagent_delegation>
 
 <quality_assurance>

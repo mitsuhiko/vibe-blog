@@ -173,30 +173,38 @@ Create a comprehensive, well-sequenced set of implementation tasks based on the 
 <github_issue_completion>
 After completing your task breakdown:
 
-1. **Update the task breakdown issue**:
+1. **Commit and push your work**:
+   ```bash
+   # Add any files you created during task breakdown
+   git add -A
+   git commit -m "Complete task breakdown for issue #NUMBER"
+   git push origin main
+   ```
+
+2. **Update the task breakdown issue**:
    ```bash
    gh issue comment NUMBER --body "[Your complete task breakdown report]"
    gh issue edit NUMBER --add-label "status:completed" --remove-label "status:in-progress"
    ```
 
-2. **Create individual task issues**: For each major phase or component, create separate implementation issues:
+3. **Create individual task issues**: For each major phase or component, create separate implementation issues:
    ```bash
    # Example for database implementation task
    gh issue create --title "Implementation: Database Models and Schema" \
-     --body "## Parent Issues\n- Architecture: #[ARCH_NUMBER]\n- Task Breakdown: #NUMBER\n\n## Task Description\n[From your breakdown]\n\n## Implementation Steps\n[Key steps from your breakdown]\n\n## Dependencies\n[List any prerequisites]\n\n## Success Criteria\n[From your breakdown]" \
+     --body "## Parent Issues\n- Architecture: #[ARCH_NUMBER]\n- Task Breakdown: #NUMBER\n\n## Task Description\n[From your breakdown]\n\n## Implementation Steps\n[Key steps from your breakdown]\n\n## Dependencies\n[List any prerequisites]\n\n## Success Criteria\n[From your breakdown]\n\n## Git Instructions\nCommit and push work regularly with: git add -A && git commit -m 'description' && git push origin main" \
      --label "task,agent:detailed-planning,status:planned,phase:implementation,priority:high"
    
    # Create similar issues for other major components
    ```
 
-3. **Create planning coordination issue**:
+4. **Create planning coordination issue**:
    ```bash
    gh issue create --title "Detailed Planning: [Project Name]" \
-     --body "## Parent Issues\n- Task Breakdown: #NUMBER\n\n## Planning Tasks\nThe following tasks need detailed planning:\n[List all task issue numbers created]\n\n## Next Steps\nThe Detailed Planning Agent should:\n1. Read each task issue\n2. Create detailed step-by-step implementation plans\n3. Update each issue with the plan" \
+     --body "## Parent Issues\n- Task Breakdown: #NUMBER\n\n## Planning Tasks\nThe following tasks need detailed planning:\n[List all task issue numbers created]\n\n## Next Steps\nThe Detailed Planning Agent should:\n1. Read each task issue\n2. Create detailed step-by-step implementation plans\n3. Update each issue with the plan\n4. Commit and push work regularly with: git add -A && git commit -m 'description' && git push origin main" \
      --label "plan,agent:detailed-planning,status:planned,phase:planning"
    ```
 
-4. **Link all issues**: Reference the created issues in the breakdown issue
+5. **Link all issues**: Reference the created issues in the breakdown issue
    ```bash
    gh issue comment NUMBER --body "Created the following implementation task issues:\n- Database: #[DB_NUMBER]\n- API: #[API_NUMBER]\n- Frontend: #[FE_NUMBER]\n\nDetailed planning will continue in issue #[PLANNING_NUMBER]"
    ```
