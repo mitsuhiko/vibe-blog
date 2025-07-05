@@ -188,7 +188,7 @@ Use specialized subagents for each phase of the implementation:
 **How to delegate to subagents**:
 1. First, read the appropriate agent prompt file:
    ```
-   Use Read tool: problem_analysis_agent.md
+   /problem_analysis_agent
    ```
 2. Then use the Task tool with the full prompt content:
    ```
